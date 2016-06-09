@@ -6,3 +6,4 @@ Use Hadoop MapReduce jobs to analysis log files to provide product recommendatio
 * Co-occurrence matrix:  transforms the history matrix into an product-by-product matrix, recording which product co-occur or appear together in user histories.
 * Indicator matrix: The indicator matrix retains only the anomalous (interesting) co-occurrences that will serve as clues for recommendation. 
 
+<img src=“mapreduce.png" align=“middle” />
