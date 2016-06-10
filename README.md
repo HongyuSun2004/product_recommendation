@@ -1,4 +1,4 @@
-# product_recommendation
+# Product Recommendation
 Use Hadoop MapReduce jobs to analyze e-commerce web log files to provide product recommendation.
 
 ### Recommendation Model
