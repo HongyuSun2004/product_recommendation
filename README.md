@@ -16,7 +16,7 @@ Use Hadoop MapReduce jobs to analysis e-commerce web log files to provide produc
 - The third MapReduce Job generate the indicator matrix which retains only the anomalous (interesting) co-occurrences. The indicator matrix will serve as clues for recommendation. The input is the output of the previous MapReduce Job output. The output key is a product IDs, and the value is a list of products whick can be used as recommendation. The production list are ranked by the co-occur number.
 
 ### How to create your recommendation jar file:
-* Create your LogFileLineParser java class which implements the parser.LogFileLineParser interface.
+* Create your LogFileLineParser java class which implements the parser.LogFileLineParser interface. Your LogFileLineParser should provide parse session ID and parse product ID methods. Those methods will be used by map-reduce job to parse each line of log files.
 * Use maven to build and create the recommendation-1.0-SNAPSHOT.jar file 
 ```sh
 mvn package
@@ -24,17 +24,17 @@ mvn package
 
 ### How to run the haoop map-reduce jobs:
 
-Step 1:
+Step 1 - Run User session Product job with your LogFileLineParser class and your logfiles HDFS path.
 ```sh
 hadoop jar recommendation-1.0-SNAPSHOT.jar hadoop.mapreduce.UserProductDriver -DlogFileLineParserClass="<your LogFileLineParser class name>" <your logfiles HDFS path> out/step1
 ```
 
-Step 2:
+Step 2 - Run Product CoOccur job
 ```sh
 hadoop jar recommendation-1.0-SNAPSHOT.jar hadoop.mapreduce.ProductCoOccurDriver out/step1 out/step2
 ```
 
-Step 3:
+Step 3 - Run Product Indicator job
 ```sh
 hadoop jar recommendation-1.0-SNAPSHOT.jar hadoop.mapreduce.ProductIndicatorDriver out/step2 out/step3
 ```
