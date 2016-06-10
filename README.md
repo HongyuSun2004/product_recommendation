@@ -1,17 +1,19 @@
 # product_recommendation
-Use Hadoop MapReduce jobs to analysis log files to provide product recommendation.
+Use Hadoop MapReduce jobs to analysis e-commerce web log files to provide product recommendation.
 
 ### Recommendation Model
 - One customer could visit multiple products during a visit session.
 - Product co-occurrence measures the frequency with which two products appear close to each other in a customer’s visit session.
 - It provides results for “people who is interested in this, also interested that”.
 
-### Builds three matrices from web log files:
-* History matrix:  contains the interactions between users and products as a user-by-product binary matrix
-* Co-occurrence matrix:  transforms the history matrix into an product-by-product matrix, recording which product co-occur or appear together in user histories.
-* Indicator matrix: The indicator matrix retains only the anomalous (interesting) co-occurrences that will serve as clues for recommendation. 
+### Implementation:
 
 ![MapReduce Jobs](mapreduce.png?raw=true “MapReduce Jobs“)
+- The first MapReduce Job generates a History matrix which contains the interactions between user visit session and products. The input is web log files. The output key is a visit session ID, and the value is a list of product IDs visited during the visi session. Note: The product list contains the unique products.
+
+- The second MapReduce Job transforms the history matrix into an product-by-product matrix which stores product pairs co-occur or appear together in multiple users visi session. The input is the output of the previous MapReduce Job output. The output key is a pair of product IDs, and the value is the co-occur number of the pair of products appear together in multiple user’s visi sessions.
+
+- The third MapReduce Job generate the indicator matrix which retains only the anomalous (interesting) co-occurrences. The indicator matrix will serve as clues for recommendation. The input is the output of the previous MapReduce Job output. The output key is a product IDs, and the value is a list of products whick can be used as recommendation. The production list are ranked by the co-occur number.
 
 ### How to create your recommendation jar file:
 * Create your LogFileLineParser java class which implements the parser.LogFileLineParser interface.
