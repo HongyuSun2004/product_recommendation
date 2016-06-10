@@ -9,7 +9,7 @@ public class SampleLogFileLineParser implements LogFileLineParser{
     }
 
     @Override
-    public boolean containsProduct(String line) {
+    public boolean containsProduct() {
         return line.indexOf("/sc.do") >= 0
                 && line.indexOf("com.nlg.web.interceptor.ActionLoggingInterceptor") >= 0
                 && line.indexOf("proxyhandler") < 0
@@ -17,7 +17,7 @@ public class SampleLogFileLineParser implements LogFileLineParser{
     }
 
     @Override
-    public String parseSessionID(String line) {
+    public String parseSessionID() {
         int a = line.indexOf("]");
         int b = line.indexOf(":", a);
 
@@ -31,7 +31,7 @@ public class SampleLogFileLineParser implements LogFileLineParser{
     }
 
     @Override
-    public String parseProductID(String line) {
+    public String parseProductID() {
         int a = line.indexOf("sc.do");
         int aaa = line.indexOf("i=&", a);
         int bbb = line.indexOf("c=&", a);

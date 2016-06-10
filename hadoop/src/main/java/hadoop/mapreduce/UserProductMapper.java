@@ -24,8 +24,11 @@ public class UserProductMapper extends Mapper<LongWritable, Text, Text, Text> {
 	@Override
 	protected void setup(Context context) throws IOException, InterruptedException {
 		Configuration conf = context.getConfiguration();
+
+		//get the logFileLineParserClass name from config
 		logFileLineParserClassName = conf.get("logFileLineParserClass", "parser.SampleLogFileLineParser");
 
+		//create a LogFileLineParser instance
 		logFileLineParser = instantiate(logFileLineParserClassName, LogFileLineParser.class);
 	}
 
@@ -35,11 +38,11 @@ public class UserProductMapper extends Mapper<LongWritable, Text, Text, Text> {
 		String line = value.toString();
 		if(line.length() > 0){
 			logFileLineParser.setLogFileLine(line);
-			if(logFileLineParser.containsProduct(line)) {
-				String productID = logFileLineParser.parseProductID(line);
+			if(logFileLineParser.containsProduct()) {
+				String productID = logFileLineParser.parseProductID();
 
 				if(productID != null){
-					String sessionID = logFileLineParser.parseSessionID(line);
+					String sessionID = logFileLineParser.parseSessionID();
 					session.set(sessionID);
 					product.set(productID);
 
