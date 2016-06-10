@@ -1,4 +1,4 @@
-package log;
+package parser;
 
 public class SampleLogFileLineParser implements LogFileLineParser{
     private String line;

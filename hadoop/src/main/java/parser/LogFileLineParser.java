@@ -1,4 +1,4 @@
-package log;
+package parser;
 
 /**
  * LogFileLineParser is a interface.

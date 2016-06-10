@@ -2,7 +2,7 @@ package hadoop.mapreduce;
 
 import java.io.IOException;
 
-import log.LogFileLineParser;
+import parser.LogFileLineParser;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -24,7 +24,7 @@ public class UserProductMapper extends Mapper<LongWritable, Text, Text, Text> {
 	@Override
 	protected void setup(Context context) throws IOException, InterruptedException {
 		Configuration conf = context.getConfiguration();
-		logFileLineParserClassName = conf.get("logFileLineParserClass", "log.SampleLogFileLineParser");
+		logFileLineParserClassName = conf.get("logFileLineParserClass", "parser.SampleLogFileLineParser");
 
 		logFileLineParser = instantiate(logFileLineParserClassName, LogFileLineParser.class);
 	}
