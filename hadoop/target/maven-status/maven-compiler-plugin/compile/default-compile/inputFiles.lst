@@ -1,9 +1,0 @@
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductCoOccurDriver.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductIndicatorMapper.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/UserProductReducer.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductCoOccurMapper.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductIndicatorDriver.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/UserProductDriver.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductIndicatorReducer.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/UserProductMapper.java
-/Users/hongyu/work/recommendation/src/main/java/hadoop/mapreduce/ProductCoOccurReducer.java
